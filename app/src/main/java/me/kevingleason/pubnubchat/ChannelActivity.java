@@ -260,6 +260,9 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
         Chatroom studentUnion = new Chatroom("Student Union", 28.601925, -81.200535);
         Chatroom library = new Chatroom("Library", 28.600368, -81.201542);
         Chatroom starbucks = new Chatroom("Starbucks", 28.603421, -81.198883);
+        Chatroom hec = new Chatroom("HEC", 28.600583, -81.197702);
+        Chatroom gym = new Chatroom("UCF Gym", 28.595816, -81.199396);
+        Chatroom arena = new Chatroom("CFE Arena", 28.607238, -81.197364);
 
         ListView channelList = (ListView)findViewById(R.id.listView);
         //mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -282,15 +285,32 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
         Location locationC = new Location("locationB");
         locationC.setLatitude(starbucks.latitude);
         locationC.setLongitude(starbucks.longitude);
+        Location locationD = new Location("locationD");
+        locationD.setLatitude(hec.latitude);
+        locationD.setLongitude(hec.longitude);
+
+        Location locationE = new Location("LocationE");
+        locationE.setLatitude(gym.latitude);
+        locationE.setLongitude(gym.longitude);
+
+        Location locationF = new Location("LocationF");
+        locationF.setLatitude(arena.latitude);
+        locationF.setLongitude(arena.longitude);
 
         studentUnion.distanceTo = getMiles(mCurrentLocation.distanceTo(locationA));
         library.distanceTo = getMiles(mCurrentLocation.distanceTo(locationB));
         starbucks.distanceTo = getMiles(mCurrentLocation.distanceTo(locationC));
+        hec.distanceTo = getMiles(mCurrentLocation.distanceTo(locationD));
+        gym.distanceTo = getMiles(mCurrentLocation.distanceTo(locationE));
+        arena.distanceTo = getMiles(mCurrentLocation.distanceTo(locationF));
 
         chatrooms = new ArrayList<Chatroom>();
         chatrooms.add(studentUnion);
         chatrooms.add(library);
         chatrooms.add(starbucks);
+        chatrooms.add(hec);
+        chatrooms.add(gym);
+        chatrooms.add(arena);
 
         Collections.sort(chatrooms, new Comparator<Chatroom>() {
             public int compare(Chatroom x, Chatroom y) {
