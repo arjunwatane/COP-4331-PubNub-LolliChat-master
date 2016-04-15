@@ -104,6 +104,7 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
 
         //start new
         //locate the UI widgets
+        /*
 
         mLatitudeTextView = (TextView) findViewById(R.id.latitude_text);
         mLongitudeTextView = (TextView) findViewById(R.id.longitude_text);
@@ -112,10 +113,10 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
         mLatitudeLabel = getResources().getString(R.string.latitude_label);
         mLongitudeLabel = getResources().getString(R.string.longitude_label);
         mLastUpdateTimeLabel = getResources().getString(R.string.last_update_time_label);
-
+        */
 
         mRequestingLocationUpdates = true;     //originally set to false from sample app but since our app will always need to
-        mLastUpdateTime = "";                   // be requesting updates set to true
+        //mLastUpdateTime = "";                   // be requesting updates set to true
 
         // Update values using data stored in the Bundle.
         updateValuesFromBundle(savedInstanceState);
@@ -243,12 +244,13 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
     }
 
     private void updateUI() {
-        mLatitudeTextView.setText(String.format("%s: %f", mLatitudeLabel,
-                mCurrentLocation.getLatitude()));
-        mLongitudeTextView.setText(String.format("%s: %f", mLongitudeLabel,
-                mCurrentLocation.getLongitude()));
-        mLastUpdateTimeTextView.setText(String.format("%s: %s", mLastUpdateTimeLabel,
-                mLastUpdateTime));
+        //for debugging purposes, displays users lat, long, and last location update time
+       // mLatitudeTextView.setText(String.format("%s: %f", mLatitudeLabel,
+               // mCurrentLocation.getLatitude()));
+       // mLongitudeTextView.setText(String.format("%s: %f", mLongitudeLabel,
+               // mCurrentLocation.getLongitude()));
+       // mLastUpdateTimeTextView.setText(String.format("%s: %s", mLastUpdateTimeLabel,
+               // mLastUpdateTime));
 
         // put the UI stuff here because getting the current location of the user was pulling a
         // null pointer reference as it hadnt been instansiated yet
@@ -416,8 +418,8 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
         mCurrentLocation = location;
         mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
         updateUI();
-        Toast.makeText(this, getResources().getString(R.string.location_updated_message),
-                Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, getResources().getString(R.string.location_updated_message),
+            //    Toast.LENGTH_SHORT).show();
     }
 
     private Location getLoc()

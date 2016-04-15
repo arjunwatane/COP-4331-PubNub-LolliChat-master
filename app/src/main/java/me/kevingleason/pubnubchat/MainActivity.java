@@ -423,7 +423,7 @@ public class MainActivity extends ListActivity {
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity.this,"RUNNIN",Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(MainActivity.this,"RUNNIN",Toast.LENGTH_SHORT).show();
                             mChatAdapter.setMessages(chatMsgs);
                         }
                     });
@@ -588,7 +588,7 @@ public class MainActivity extends ListActivity {
             if (gcmRegId.isEmpty()) {
                 registerInBackground();
             } else {
-                Toast.makeText(this,"Registration ID already exists: " + gcmRegId,Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(this,"Registration ID already exists: " + gcmRegId,Toast.LENGTH_SHORT).show();
             }
         } else {
             Log.e("GCM-register", "No valid Google Play Services APK found.");
