@@ -3,6 +3,7 @@ package me.kevingleason.pubnubchat;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,6 +27,8 @@ import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static android.content.Intent.ACTION_VIEW; //for displaying documentation added by rubba
 
 /**
  * Login Activity for the first time the app is opened, or when a user clicks the sign out button.
@@ -180,6 +183,10 @@ public class LoginActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            Uri uri = Uri.parse("https://drive.google.com/folderview?id=0B3mnZ3UIlXSuS0VZTnhrREZ6d1U&usp=sharing");
+            Intent intent2 = new Intent(ACTION_VIEW, uri);
+            startActivity(intent2);
             return true;
         }
 

@@ -2,6 +2,7 @@ package me.kevingleason.pubnubchat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -32,6 +33,9 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.LocationListener; //new
 import com.google.android.gms.location.LocationRequest; //new
 import com.google.android.gms.location.LocationServices; //new
+
+import static android.content.Intent.ACTION_VIEW;
+
 //added the 3 implements to get location to function properly
 public class ChannelActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
 
@@ -71,7 +75,7 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
      */
     protected Location mLastLocation;
     protected LocationRequest mLocationRequest;
-    protected Location mCurrentLocation;
+    protected static Location mCurrentLocation;
     protected Boolean mRequestingLocationUpdates;
     protected String mLastUpdateTime;
 
@@ -127,7 +131,7 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
 
     }
 
-    public double getMiles(float meters)
+    public static double getMiles(float meters)
     {
         return meters*0.000621371192;
     }
@@ -154,6 +158,17 @@ public class ChannelActivity extends Activity implements ConnectionCallbacks, On
             case R.id.action_sign_out:
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+            case R.id.action_doc:
+                Uri uri = Uri.parse("https://drive.google.com/folderview?id=0B3mnZ3UIlXSuS0VZTnhrREZ6d1U&usp=sharing");
+                Intent intent2 = new Intent(ACTION_VIEW, uri);
+                startActivity(intent2);
+                return true;
+
+            case R.id.action_manual:
+                Uri uri2 = Uri.parse("https://docs.google.com/document/d/1l3BnF_wMAlLRFtVkTJ0Xu3rbDa4xKfhGlCNLhR8eZJI/edit?usp=sharing");
+                Intent intent3 = new Intent(ACTION_VIEW, uri2);
+                startActivity(intent3);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
+import android.location.Location;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +48,8 @@ import java.util.Set;
 import me.kevingleason.pubnubchat.adt.ChatMessage;
 import me.kevingleason.pubnubchat.callbacks.BasicCallback;
 
+import static android.content.Intent.ACTION_VIEW;
+
 /**
  * Main Activity is where all the magic happens. To keep this demo simple I did not use fragment
  *   views, simply a ListView that is populated by a custom adapter, ChatAdapter. If you want to
@@ -65,6 +69,7 @@ public class MainActivity extends ListActivity {
     private ListView mListView;
     private ChatAdapter mChatAdapter;
     private SharedPreferences mSharedPrefs;
+    Chatroom studentUnion = new Chatroom("Student Union", 28.601925, -81.200535);
 
     private String username;
     public static String channel = "init";
@@ -146,12 +151,18 @@ public class MainActivity extends ListActivity {
             case R.id.action_sign_out:
                 signOut();
                 return true;
-            case R.id.action_gcm_register:
-                gcmRegister();
+            case R.id.action_doc:
+                Uri uri = Uri.parse("https://drive.google.com/folderview?id=0B3mnZ3UIlXSuS0VZTnhrREZ6d1U&usp=sharing");
+                Intent intent2 = new Intent(ACTION_VIEW, uri);
+                startActivity(intent2);
                 return true;
-            case R.id.action_gcm_unregister:
-                gcmUnregister();
+
+            case R.id.action_manual:
+                Uri uri2 = Uri.parse("https://docs.google.com/document/d/1l3BnF_wMAlLRFtVkTJ0Xu3rbDa4xKfhGlCNLhR8eZJI/edit?usp=sharing");
+                Intent intent3 = new Intent(ACTION_VIEW, uri2);
+                startActivity(intent3);
                 return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -398,7 +409,7 @@ public class MainActivity extends ListActivity {
      * Get last 100 messages sent on current channel from history.
      */
     public void history(){
-        this.mPubNub.history(this.channel,100,false,new Callback() {
+        this.mPubNub.history(this.channel, 100, false, new Callback() {
             @Override
             public void successCallback(String channel, final Object message) {
                 try {
@@ -423,7 +434,7 @@ public class MainActivity extends ListActivity {
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                          //  Toast.makeText(MainActivity.this,"RUNNIN",Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(MainActivity.this,"RUNNIN",Toast.LENGTH_SHORT).show();
                             mChatAdapter.setMessages(chatMsgs);
                         }
                     });
@@ -486,18 +497,53 @@ public class MainActivity extends ListActivity {
      * @param view The 'SEND' Button which is clicked to trigger a sendMessage call.
      */
     public void sendMessage(View view){
-        String message = mMessageET.getText().toString();
-        if (message.equals("")) return;
-        mMessageET.setText("");
-        ChatMessage chatMsg = new ChatMessage(username, message, System.currentTimeMillis());
-        try {
-            JSONObject json = new JSONObject();
-            json.put(Constants.JSON_USER, chatMsg.getUsername());
-            json.put(Constants.JSON_MSG,  chatMsg.getMessage());
-            json.put(Constants.JSON_TIME, chatMsg.getTimeStamp());
-            publish(Constants.JSON_GROUP, json);
-        } catch (JSONException e){ e.printStackTrace(); }
-        mChatAdapter.addMessage(chatMsg);
+    	Location locationA = new Location("locationA");
+        locationA.setLatitude(studentUnion.latitude);
+        locationA.setLongitude(studentUnion.longitude);
+        studentUnion.distanceTo = ChannelActivity.getMiles(ChannelActivity.mCurrentLocation.distanceTo(locationA));
+
+        if(studentUnion.distanceTo > 2.000) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Out of Range");
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage("Sorry, you can't send messages while off campus.");
+            alertDialog.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        } else {
+	        String message = mMessageET.getText().toString();
+            if (message.length() >= 200)
+            {
+                AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(this);
+                alertDialog2.setTitle("Character limit reached");
+                alertDialog2.setCancelable(false);
+                alertDialog2.setMessage("Sorry, you can't send messages containing more than 200 characters.");
+                alertDialog2.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog2.show();
+                return;
+
+            }
+	        if (message.equals("")) return;
+	        mMessageET.setText("");
+	        ChatMessage chatMsg = new ChatMessage(username, message, System.currentTimeMillis());
+	        try {
+	            JSONObject json = new JSONObject();
+	            json.put(Constants.JSON_USER, chatMsg.getUsername());
+	            json.put(Constants.JSON_MSG,  chatMsg.getMessage());
+	            json.put(Constants.JSON_TIME, chatMsg.getTimeStamp());
+	            publish(Constants.JSON_GROUP, json);
+	        } catch (JSONException e){ e.printStackTrace(); }
+	        mChatAdapter.addMessage(chatMsg);
+        }
     }
 
     /**
