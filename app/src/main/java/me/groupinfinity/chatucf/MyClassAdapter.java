@@ -1,4 +1,4 @@
-package me.kevingleason.pubnubchat;
+package me.groupinfinity.chatucf;
 
 import android.content.Context;
 import android.view.LayoutInflater;

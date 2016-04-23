@@ -1,4 +1,4 @@
-package me.kevingleason.pubnubchat;
+package me.groupinfinity.chatucf;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

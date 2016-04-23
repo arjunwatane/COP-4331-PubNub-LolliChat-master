@@ -1,4 +1,4 @@
-package me.kevingleason.pubnubchat.callbacks;
+package me.groupinfinity.chatucf.callbacks;
 
 import android.util.Log;
 

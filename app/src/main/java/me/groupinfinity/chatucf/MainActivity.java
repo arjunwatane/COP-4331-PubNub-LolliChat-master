@@ -1,5 +1,5 @@
-package me.kevingleason.pubnubchat;
-
+package me.groupinfinity.chatucf;
+//Base code adapted from Kevin Gleason
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
@@ -45,8 +45,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import me.kevingleason.pubnubchat.adt.ChatMessage;
-import me.kevingleason.pubnubchat.callbacks.BasicCallback;
+import me.groupinfinity.chatucf.adt.ChatMessage;
+import me.groupinfinity.chatucf.callbacks.BasicCallback;
 
 import static android.content.Intent.ACTION_VIEW;
 

@@ -1,4 +1,4 @@
-package me.kevingleason.pubnubchat.adt;
+package me.groupinfinity.chatucf.adt;
 
 /**
  * Created by GleasonK on 7/11/15.

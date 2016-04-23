@@ -1,4 +1,4 @@
-package me.kevingleason.pubnubchat;
+package me.groupinfinity.chatucf;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import me.kevingleason.pubnubchat.adt.ChatMessage;
+import me.groupinfinity.chatucf.adt.ChatMessage;
 
 /**
  * Created by GleasonK on 7/11/15.

@@ -1,4 +1,4 @@
-package me.kevingleason.pubnubchat.gcm;
+package me.groupinfinity.chatucf.gcm;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -14,9 +14,9 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
-import me.kevingleason.pubnubchat.Constants;
-import me.kevingleason.pubnubchat.MainActivity;
-import me.kevingleason.pubnubchat.R;
+import me.groupinfinity.chatucf.Constants;
+import me.groupinfinity.chatucf.MainActivity;
+import me.groupinfinity.chatucf.R;
 
 /**
  * Created by GleasonK on 7/14/15.

@@ -1,4 +1,4 @@
-package me.kevingleason.pubnubchat;
+package me.groupinfinity.chatucf;
 
 public class Chatroom {
     String name;
