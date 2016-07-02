@@ -27,14 +27,18 @@ While the user is not on the UCF campus, they are still able to join and leave a
 
 
 
-## PubNub's Role
+## Class Project and PubNub's Role
+This app was built for COP 4331 - Processes of Object Oriented Programming at University of Central Florida in Spring 2016. We are publishing this open-source for anyone to use, but we are not liable for anything (such as cheating, plagiarism, or malfunctions) from users of this project. 
+
+Currently, it only runs on Android. For GPS activity to work correctly, it must be used on an actual device, not an emulator.
 
 We base our app from PubNub's framework, which we greatly modified for our purposes. PubNub's information may be found here:
 [Download APK Here](http://kevingleason.me/pubnub-android-lolli-chat/)
 
-
 ### Make it your own!
 
-We encourage you to expand on this application! You could incorporate new chat room features, modify interactions, add content, etc. Its up to you! If you choose to do these, you will need your own Pub and Sub keys. To get these, [sign up for a PubNub account](http://www.pubnub.com/get-started/), it's quick and easy! You can find your unique PubNub keys in the [PubNub Developer Dashboard](https://admin.pubnub.com). Then, enable and customize the Presence, Storage & Playback, and Push Notification features. Once you have done this, simply replace the `String` values for `PUBLISH_KEY` and `SUBSCRIBE_KEY` in `me.kevingleason.pubnubchat.Constants`. 
+We encourage you to expand on this application! You could incorporate new chat room features, modify interactions, add content, etc. Its up to you!
+
+If you choose to do these, you will need your own Pub and Sub keys. To get these, [sign up for a PubNub account](http://www.pubnub.com/get-started/), it's quick and easy! You can find your unique PubNub keys in the [PubNub Developer Dashboard](https://admin.pubnub.com). Then, enable and customize the Presence, Storage & Playback, and Push Notification features. Once you have done this, simply replace the `String` values for `PUBLISH_KEY` and `SUBSCRIBE_KEY` in `me.kevingleason.pubnubchat.Constants`. 
 
 To enable Push Notifications, you will need to [register your app for GCM](https://developers.google.com/cloud-messaging/android/client). You will then receive an API Key which you can use to enable Push Notifications in the [PubNub Developer Dashboard](https://admin.pubnub.com), as well as a Sender ID which you should use to replace the `GCM_SENDER_ID` in the `me.kevingleason.pubnubchat.Constants` file.
