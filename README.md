@@ -1,6 +1,6 @@
 # Android PubNub Lolli-Chat
 
-A simple chatting app that shows off the power of various PubNub features.
+Chat.UCF is a location-based messenger mobile application available for Android. Our application allows users to communicate in real-time, inside of chat rooms designated for specific areas on the UCF (University of Central Florida) campus. The location of users is tracked via GPS and available chat rooms are presented to the user upon login, in a sorted list based on how close the user is to each designated area. Users are able to join any chat room in the list but can only participate in the conversation if they are located on the UCF campus. We have chosen to limit the scope of our users to people on campus to encourage interaction and connection amongst peers at UCF and limit the amount of potential negative activity that may arise within the application.
 
 <img src="img/pubchat.jpg" width="800">
 
