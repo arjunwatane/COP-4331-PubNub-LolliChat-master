@@ -1,18 +1,26 @@
 # Android PubNub Lolli-Chat
 
-Chat.UCF is a location-based messenger mobile application available for Android. Our application allows users to communicate in real-time, inside of chat rooms designated for specific areas on the UCF (University of Central Florida) campus. The location of users is tracked via GPS and available chat rooms are presented to the user upon login, in a sorted list based on how close the user is to each designated area. Users are able to join any chat room in the list but can only participate in the conversation if they are located on the UCF campus. We have chosen to limit the scope of our users to people on campus to encourage interaction and connection amongst peers at UCF and limit the amount of potential negative activity that may arise within the application.
+Chat.UCF is a location-based messenger mobile application available for Android. Our application allows users to communicate in real-time, inside of chat rooms designated for specific areas on the UCF (University of Central Florida) campus. The location of users is tracked via GPS and available chat rooms are presented to the user upon login, in a sorted list based on how close the user is to each designated area. Users are able to view any chat room in the list but can only participate in the conversation if they are located on the UCF campus. We chose to limit the scop of our users to people only on campus to encourage interaction and connection amongst peers at UCF and limit potential negative activity that may arise.
 
 <img src="img/Screen Shot 2016-07-02 at 3.05.34 PM.png" width="800">
 
-## Overview
 
-[Download APK Here](http://kevingleason.me/pubnub-android-lolli-chat/)
+## Authentication
+To enable authentication of our user base, users must sign into the application with Facebook in order to utilize their real name as their username in the chat rooms. We hope that this system encourages our users to be helpful and informative, while meeting new people in the process. 
 
-This Android chatting app allows a user to create a login identity that is then stored in `SharedPreferences` until logout. The initial chat room is titled `MainChat`, but a user can change chat rooms at any time. An integer in the menu bar indicates how many users are in the current chat room. If you click that `here now` number, a modal with all users in the room is displayed. Clicking on a user in the `here now` modal will display the login time of the corresponding user. Clicking on a message in the chat room will send a poke to that user, notifying them that you are in the chat room.
+## System States
+Note: Both states MUST have WiFi or LTE and Location TURNED ON, in order for the application to work. 
+  Using this system while on UCF campus:
+While the user is on the UCF campus, they are able to join and leave any chat room. They are also able to send and receive messages while in these chat rooms.
+  Using this system while off UCF campus:
+While the user is not on the UCF campus, they are still able to join and leave any chat room. The difference is they are still able to receive but they cannot send any messages within these chat rooms.
+
+
 
 ## PubNub's Role
 
 Let's walk through the various roles PubNub is playing in this Chatting Application...
+[Download APK Here](http://kevingleason.me/pubnub-android-lolli-chat/)
 
 ### Publish/Subscribe
 
